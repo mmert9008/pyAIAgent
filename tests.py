@@ -1,29 +1,20 @@
-from functions.get_file_content import get_file_content
+from functions.write_file import write_file
 
 
 def main():
-    # Test 1: Read main.py
-    print("Result for 'main.py':")
-    result1 = get_file_content("calculator", "main.py")
+    print("Result for writing to 'lorem.txt':")
+    result1 = write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum")
     print(result1)
     print()
 
-    # Test 2: Read pkg/calculator.py
-    print("Result for 'pkg/calculator.py':")
-    result2 = get_file_content("calculator", "pkg/calculator.py")
+    print("Result for writing to 'pkg/morelorem.txt':")
+    result2 = write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet")
     print(result2)
     print()
 
-    # Test 3: Try to read outside working directory
-    print("Result for '/bin/cat':")
-    result3 = get_file_content("calculator", "/bin/cat")
+    print("Result for writing to '/tmp/temp.txt':")
+    result3 = write_file("calculator", "/tmp/temp.txt", "this should not be allowed")
     print(result3)
-    print()
-
-    # Test 4: Try to read non-existent file
-    print("Result for 'pkg/does_not_exist.py':")
-    result4 = get_file_content("calculator", "pkg/does_not_exist.py")
-    print(result4)
 
 
 if __name__ == "__main__":

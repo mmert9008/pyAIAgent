@@ -13,4 +13,4 @@ wheels/
 venv/
 
 # Other
-.env
+*.env
