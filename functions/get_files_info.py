@@ -1,5 +1,4 @@
 import os
-
 from google.genai import types
 
 
@@ -23,12 +22,10 @@ def get_files_info(working_directory, directory="."):
             entry_path = os.path.join(abs_full_path, entry)
             file_size = os.path.getsize(entry_path)
             is_dir = os.path.isdir(entry_path)
-            result_lines.append(
-                f" - {entry}: file_size={file_size} bytes, is_dir={is_dir}"
-            )
-
+            result_lines.append(f" - {entry}: file_size={file_size} bytes, is_dir={is_dir}")
+        
         return "\n".join(result_lines)
-
+    
     except Exception as e:
         return f"Error: {str(e)}"
 

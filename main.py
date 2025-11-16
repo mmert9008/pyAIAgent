@@ -52,14 +52,16 @@ All paths you provide should be relative to the working directory. You do not ne
         ),
     )
 
-    if response.candidates[0].content.parts[0].function_call:
-        for part in response.candidates[0].content.parts:
-            if part.function_call:
-                function_call_part = part.function_call
-                print(
-                    f"Calling function: {function_call_part.name}({function_call_part.args})"
-                )
-    else:
+    has_function_call = False
+    for part in response.candidates[0].content.parts:
+        if part.function_call:
+            has_function_call = True
+            function_call_part = part.function_call
+            print(
+                f"Calling function: {function_call_part.name}({function_call_part.args})"
+            )
+
+    if not has_function_call:
         print(response.text)
 
     if verbose:
